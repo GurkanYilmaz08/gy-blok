@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { openai } from '../../lib/openai';
 import { supabase } from '../../lib/supabase';
 import slugify from 'slugify';
@@ -12,17 +12,20 @@ export function ArticleGenerator() {
       setIsGenerating(true);
       setStatus('Fetching categories...');
 
-      const { data: categories } = await supabase
+      // Kategorileri çekme
+      const { data: categories, error: categoriesError } = await supabase
         .from('categories')
         .select('id, name');
 
-      if (!categories?.length) {
-        throw new Error('No categories found');
+      if (categoriesError || !categories?.length) {
+        throw new Error(categoriesError?.message || 'No categories found');
       }
 
+      // Rastgele kategori seçme
       const randomCategory = categories[Math.floor(Math.random() * categories.length)];
       setStatus(`Generating article for category: ${randomCategory.name}...`);
 
+      // OpenAI ile makale oluşturma
       const completion = await openai.chat.completions.create({
         model: "gpt-4",
         messages: [
@@ -40,21 +43,29 @@ export function ArticleGenerator() {
         response_format: { type: "json_object" }
       });
 
-      const article = JSON.parse(completion.choices[0].message.content);
+      // OpenAI yanıtının doğruluğunu kontrol etme
+      const messageContent = completion.choices[0]?.message?.content;
+      if (!messageContent) {
+        throw new Error('OpenAI response is empty or invalid');
+      }
+
+      const article = JSON.parse(messageContent);
       setStatus('Saving article...');
 
-      const { data: adminUser } = await supabase
+      // Admin kullanıcısını çekme
+      const { data: adminUser, error: adminUserError } = await supabase
         .from('profiles')
         .select('id')
         .single();
 
-      if (!adminUser) {
-        throw new Error('No admin user found');
+      if (adminUserError || !adminUser) {
+        throw new Error(adminUserError?.message || 'No admin user found');
       }
 
+      // Makaleyi kaydetme
       const slug = slugify(article.title, { lower: true, strict: true });
 
-      await supabase
+      const { error: insertError } = await supabase
         .from('articles')
         .insert({
           title: article.title,
@@ -69,9 +80,13 @@ export function ArticleGenerator() {
           published_at: new Date().toISOString()
         });
 
+      if (insertError) {
+        throw new Error(insertError.message);
+      }
+
       setStatus('Article generated and saved successfully!');
     } catch (error) {
-      setStatus(`Error: ${error.message}`);
+      setStatus(`Error: ${(error as Error).message}`);
     } finally {
       setIsGenerating(false);
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react';
 import { Github, Linkedin, Mail, Code, Database, Server } from 'lucide-react';
 
 export function About() {
@@ -27,13 +27,13 @@ export function About() {
             </div>
             <div className="p-8">
               <div className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">
-                Yazılım Geliştirici
+                Bilgi Teknolojileri Uzmanı
               </div>
               <h2 className="mt-2 text-3xl font-bold text-gray-900">
                 Gürkan Yılmaz
               </h2>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                10+ yıllık deneyimle yazılım geliştirme, sistem yönetimi ve veritabanı optimizasyonu alanlarında uzmanlaşmış bir teknoloji tutkunuyum. Modern web teknolojileri, bulut sistemleri ve DevOps pratikleri konularında sürekli kendimi geliştirmeye odaklanıyorum.
+                20+ yıllık deneyimle yazılım geliştirme, sistem yönetimi ve veritabanı optimizasyonu alanlarında uzmanlaşmış bir teknoloji tutkunuyum. Modern web teknolojileri, bulut sistemleri ve DevOps pratikleri konularında sürekli kendimi geliştirmeye odaklanıyorum.
               </p>
 
               {/* Skills Section */}
