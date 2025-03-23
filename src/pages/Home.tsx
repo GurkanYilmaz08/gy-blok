@@ -1,4 +1,4 @@
-//import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Github, Linkedin, Mail } from 'lucide-react';
 
@@ -44,7 +44,7 @@ export function Home() {
                   <p className="text-sm text-gray-500 mt-1">Yazılım Geliştirici</p>
                   <div className="mt-4 text-center">
                     <p className="text-gray-600">
-                      20+ yıllık deneyimle yazılım geliştirme, sistem yönetimi ve veritabanı optimizasyonu alanlarında uzmanlaşmış bir teknoloji tutkunuyum.
+                      10+ yıllık deneyimle yazılım geliştirme, sistem yönetimi ve veritabanı optimizasyonu alanlarında uzmanlaşmış bir teknoloji tutkunuyum.
                     </p>
                   </div>
                   <div className="mt-6 flex space-x-4">

@@ -1,4 +1,4 @@
-//import React from 'react';
+import React from 'react';
 import { Github, Linkedin, Mail, Code, Database, Server } from 'lucide-react';
 
 export function About() {
@@ -27,7 +27,7 @@ export function About() {
             </div>
             <div className="p-8">
               <div className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">
-                Bilgi Teknolojileri Uzmanı
+                Yazılım Geliştirici
               </div>
               <h2 className="mt-2 text-3xl font-bold text-gray-900">
                 Gürkan Yılmaz
@@ -42,7 +42,7 @@ export function About() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
                     <Code className="h-6 w-6 text-indigo-600" />
-                    <span className="text-gray-700">Proje Geliştirme</span>
+                    <span className="text-gray-700">Web Geliştirme</span>
                   </div>
                   <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
                     <Database className="h-6 w-6 text-indigo-600" />
