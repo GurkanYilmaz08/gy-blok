@@ -43,7 +43,7 @@ export function ArticleGenerator() {
         response_format: { type: "json_object" }
       });
 
-      // OpenAI yanıtının doğruluğunu kontrol etme
+      // OpenAI yanıtının doğruluğunu kontrol etmek
       const messageContent = completion.choices[0]?.message?.content;
       if (!messageContent) {
         throw new Error('OpenAI response is empty or invalid');

@@ -42,7 +42,7 @@ export function About() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
                     <Code className="h-6 w-6 text-indigo-600" />
-                    <span className="text-gray-700">Web Geliştirme</span>
+                    <span className="text-gray-700">Proje Geliştirme</span>
                   </div>
                   <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
                     <Database className="h-6 w-6 text-indigo-600" />
