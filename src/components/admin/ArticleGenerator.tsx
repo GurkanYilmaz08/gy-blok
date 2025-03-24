@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { openai } from '../../lib/openai';
 import { supabase } from '../../lib/supabase';
 import slugify from 'slugify';
@@ -70,8 +70,8 @@ export function ArticleGenerator() {
         });
 
       setStatus('Article generated and saved successfully!');
-    } catch (error) {
-      setStatus(`Error: ${error.message}`);
+    } catch (error: unknown) {
+      setStatus(`Error: ${error instanceof Error ? error.message : 'An unknown error occurred'}`);
     } finally {
       setIsGenerating(false);
     }
