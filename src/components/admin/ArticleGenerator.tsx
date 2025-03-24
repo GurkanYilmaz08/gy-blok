@@ -40,7 +40,12 @@ export function ArticleGenerator() {
         response_format: { type: "json_object" }
       });
 
-      const article = JSON.parse(completion.choices[0].message.content);
+      const content = completion.choices[0].message.content;
+      if (!content) {
+        throw new Error('Failed to generate article content');
+      }
+
+      const article = JSON.parse(content);
       setStatus('Saving article...');
 
       const { data: adminUser } = await supabase
@@ -70,7 +75,7 @@ export function ArticleGenerator() {
         });
 
       setStatus('Article generated and saved successfully!');
-    } catch (error: unknown) {
+    } catch (error) {
       setStatus(`Error: ${error instanceof Error ? error.message : 'An unknown error occurred'}`);
     } finally {
       setIsGenerating(false);
