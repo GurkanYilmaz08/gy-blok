@@ -9,6 +9,7 @@ import { Contact } from './pages/Contact';
 import { CV } from './pages/CV';
 import { Admin } from './pages/Admin';
 import { AdminLogin } from './pages/AdminLogin';
+import { Settings } from './pages/Settings';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         </Route>
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/settings" element={<Settings />} />
       </Routes>
     </BrowserRouter>
   );
